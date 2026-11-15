@@ -3,8 +3,8 @@
 // the look: each size comes from --mono-radio-group-*.
 import { RadioGroup as BaseGroup } from '@base-ui/react/radio-group'
 import { type ReactNode, useId, useState } from 'react'
-import { cx } from '../../lib/cx'
-import { useMoment } from '../../hooks/use-moment'
+import { cx } from '@monorithm/react/lib/cx'
+import { useMoment } from '@monorithm/react/hooks/use-moment'
 import { RadioGroupContext, type RadioGroupVariant } from './radio-group.context'
 
 export interface RadioGroupProps {

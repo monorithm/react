@@ -1,8 +1,8 @@
 // An option of the Radio group (contract: ir/contracts/radio-group.json): a row, or an option card in the cards variant.
 import { Radio as BaseRadio } from '@base-ui/react/radio'
 import { type ReactNode, useContext, useId } from 'react'
-import { cx } from '../../lib/cx'
-import { DESCRIPTION, FOCUS, LABEL, LINE, ROW, ROW_INNER, TEXT } from '../../lib/row'
+import { cx } from '@monorithm/react/lib/cx'
+import { DESCRIPTION, FOCUS, LABEL, LINE, ROW, ROW_INNER, TEXT } from '@monorithm/react/lib/row'
 import { RadioGroupContext } from './radio-group.context'
 import { radioCard, radioDot, radioRing } from './radio-group.variants'
 
