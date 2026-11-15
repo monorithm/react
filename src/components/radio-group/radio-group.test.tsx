@@ -4,12 +4,13 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { violations } from '@monorithm/react/test/axe'
+import { contract as loadContract } from '@monorithm/react/test/contract'
 import { MomentProvider } from '@monorithm/react/contexts/moment-context'
 import { type MomentEvent } from '@monorithm/react/lib/moments'
 import { RadioGroup } from './radio-group'
 import { Radio } from './radio-group.radio'
 
-const contract = (await import('@monorithm/react/ir/contracts/radio-group.json', { with: { type: 'json' } })).default
+const contract = loadContract('radio-group')
 
 const Delivery = (props: Partial<Parameters<typeof RadioGroup>[0]>) => (
   <RadioGroup label="Delivery method" name="delivery" {...props}>

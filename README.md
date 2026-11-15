@@ -34,13 +34,15 @@ The axes of the language: `data-theme` (`dark`, `light`) and `data-density` (`po
 
 ## How the package gets the language
 
+The language is the dev dependency `@monorithm/design`, at one exact version. Until `@monorithm/design` is on npm, the dependency is a tag of `github.com/monorithm/design`, for example `github:monorithm/design#tag=v0.2.0`. `yarn.lock` keeps the checksum of the package.
+
 | Step | Command | Result |
 | --- | --- | --- |
-| Pin | `yarn pin ../design` | Copies `ir/<version>/` of `@monorithm/design` into `ir/`, and writes `language.lock` with the checksum |
-| Emit | `yarn emit` | Writes `src/tokens/`: the CSS custom properties, the Tailwind theme, the geometry of the contracts, and the typed values |
-| Drift check | `yarn check` | Stops with an error if `ir/` does not match `language.lock`, or if a generated file differs from the output of the emitter |
+| Change the version | `yarn up "@monorithm/design@github:monorithm/design#tag=v<version>"` | Installs the language of that version |
+| Emit | `yarn emit` | Writes `src/tokens/` from `ir/<version>/` of the package: the CSS custom properties, the Tailwind theme, the geometry of the contracts, and the typed values |
+| Drift check | `yarn check` | Stops with an error if a file of the IR does not match its checksum in the manifest. Also stops if a generated file differs from the output of the emitter |
 
-Do not edit a file in `src/tokens/`. Change the language source in `monorithm/design`, then pin and emit again.
+Do not edit a file in `src/tokens/`. Change the language source in `monorithm/design`, tag a version, then change the version here and emit again.
 
 ## The layout of the source
 
@@ -77,4 +79,4 @@ All text is in ASD-STE100 Simplified Technical English.
 
 ## License
 
-The Apache License, Version 2.0 applies to this repository (`LICENSE`). Harnicode is the owner of the name Monorithm, the Monorithm icon, and the related branding (`NOTICE`).
+Copyright 2026 Harnicode. The Apache License, Version 2.0 applies to this repository (`LICENSE`). Harnicode is the owner of the name Monorithm, the Monorithm icon, and the related branding (`NOTICE`).

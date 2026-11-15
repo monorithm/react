@@ -14,10 +14,9 @@
     "types": ["node"],
     "resolveJsonModule": true,
     "paths": {
-      "@monorithm/react/ir/*": ["./ir/*"],
       "@monorithm/react/test/*": ["./test/*"],
       "@monorithm/react/*": ["./src/*"]
     }
   },
-  "include": ["src", "test", "emit", "scripts", "*.config.ts"]
+  "include": ["src", "test", "emit", "*.config.ts"]
 }
