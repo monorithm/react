@@ -241,11 +241,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@monorithm/design@github:monorithm/design#tag=v0.2.0":
+  version: 0.2.0
+  resolution: "@monorithm/design@https://github.com/monorithm/design.git#commit=3d57c4f156cc4836f81267c51a654c4229967750"
+  checksum: 10c0/904b9fc2fa79fccdbdc833b477a1ebdc045dedf7e4da6700dc2e19e9372bbed4fc2bed36e6fb182cc24cb5faef3066da7bf94ecc2b29d5ea57cbc026834d3542
+  languageName: node
+  linkType: hard
+
 "@monorithm/react@workspace:.":
   version: 0.0.0-use.local
   resolution: "@monorithm/react@workspace:."
   dependencies:
     "@base-ui/react": "npm:1.9.0"
+    "@monorithm/design": "github:monorithm/design#tag=v0.2.0"
     "@tailwindcss/cli": "npm:4.3.5"
     "@tailwindcss/vite": "npm:4.3.5"
     "@testing-library/dom": "npm:10.4.2"

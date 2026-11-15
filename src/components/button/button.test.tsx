@@ -4,11 +4,12 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { violations } from '@monorithm/react/test/axe'
+import { contract as loadContract } from '@monorithm/react/test/contract'
 import { MomentProvider } from '@monorithm/react/contexts/moment-context'
 import { type MomentEvent } from '@monorithm/react/lib/moments'
 import { Button } from './button'
 
-const contract = (await import('@monorithm/react/ir/contracts/button.json', { with: { type: 'json' } })).default
+const contract = loadContract('button')
 
 const Plus = () => (
   <svg viewBox="0 0 16 16">

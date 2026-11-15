@@ -1,5 +1,5 @@
 # CI: the checks of @monorithm/react on each pull request and each push to main.
-#   check       the pinned language (ir/ matches language.lock) and the drift check of the generated tokens
+#   check       the IR of the language matches its manifest, and the drift check of the generated tokens
 #   typecheck   TypeScript
 #   test        the clause tests in jsdom, and the browser tests in the Chrome of the runner (no browser download)
 #   build       the library
@@ -38,7 +38,7 @@ jobs:
       - name: Install the dependencies
         run: yarn install --immutable
 
-      - name: Check the pinned language and the generated tokens
+      - name: Check the language and the generated tokens
         run: yarn check
 
       - name: Type check

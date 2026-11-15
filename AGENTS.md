@@ -2,8 +2,8 @@
 
 - This repository is the React package of the Monorithm Experience Language, `@monorithm/react`. It is greenfield. Do not copy files or history from an archived repository.
 - Write all text in ASD-STE100 Simplified Technical English.
-- The values come from the pinned language in `ir/`. Do not type a value of the language into a component. Use the custom properties of `src/tokens/`.
-- Do not edit `ir/` or `src/tokens/`. Pin and emit again (`yarn pin`, `yarn emit`).
+- The values come from the language: the dev dependency `@monorithm/design` at one exact version. Do not type a value of the language into a component. Use the custom properties of `src/tokens/`.
+- Do not edit `src/tokens/`. Change the version of `@monorithm/design`, then emit again (`yarn emit`).
 - Each test of a component starts its name with the id of a clause of the contract of the component.
 - A component emits a moment with `useMoment`. It never starts a haptic or a sound directly.
 - Use Yarn Berry.

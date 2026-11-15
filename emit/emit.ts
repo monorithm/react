@@ -1,18 +1,26 @@
-// The emitter of @monorithm/react. It reads only ir/ (the pinned intermediate form of the language) and writes:
+// The emitter of @monorithm/react. It reads only the intermediate form (IR) of the language: ir/<version>/ of the
+// installed @monorithm/design, at the version of that package. It writes:
 //   src/tokens/tokens.css   the CSS custom properties: --mono-<token path>, for each context of the axes
 //   src/tokens/theme.css    the Tailwind 4 theme: the utility names of the tokens, mapped to the custom properties
 //   src/tokens/values.ts    the plain values as TypeScript, for code that needs a number (a spring, a duration)
 //
 //   node emit/emit.ts           write the files
-//   node emit/emit.ts --check   fail if a committed file differs from the output (the drift check of CI)
+//   node emit/emit.ts --check   fail if the IR does not match the checksums of its manifest, or if a committed file
+//                               differs from the output (the drift check of CI)
 //
 // The axes: an explicit data-theme or data-density attribute wins. With no attribute, the media query of the system
 // selects the context: prefers-color-scheme for the theme, pointer: coarse for the density. The first context of an
-// axis in ir/axes.json is the fallback (dark, pointer).
+// axis in axes.json of the IR is the fallback (dark, pointer).
+import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
+const DESIGN = path.join(ROOT, 'node_modules', '@monorithm', 'design')
+/** The language version: the version of the installed @monorithm/design. */
+export const LANGUAGE = (JSON.parse(fs.readFileSync(path.join(DESIGN, 'package.json'), 'utf8')) as { version: string }).version
+/** The IR of that version. */
+export const IR_DIR = path.join(DESIGN, 'ir', LANGUAGE)
 
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json }
 interface Entry {
@@ -23,7 +31,7 @@ interface Entry {
   extensions?: Record<string, Json>
 }
 
-const ir = (file: string): Json => JSON.parse(fs.readFileSync(path.join(ROOT, 'ir', file), 'utf8'))
+const ir = (file: string): Json => JSON.parse(fs.readFileSync(path.join(IR_DIR, file), 'utf8'))
 const cssName = (p: string): string => `--mono-${p.replace(/\./g, '-')}`
 
 /** The position of a damped spring from 0 to 1 at the time t (s), for the stiffness k, the damping c, and the mass m. */
@@ -154,7 +162,7 @@ export function emit(): Map<string, string> {
 
   // components.css: the geometry of each contract. A multiple of a token becomes calc(var(--token) * n).
   let components = head('The geometry of the contracts.')
-  const contractDir = path.join(ROOT, 'ir', 'contracts')
+  const contractDir = path.join(IR_DIR, 'contracts')
   // The selector is the component, not :root: a var() resolves where it is declared, thus the geometry must be declared
   // inside the density context of the component.
   for (const f of fs.readdirSync(contractDir).filter((n) => n.endsWith('.json')).sort()) {
@@ -175,15 +183,26 @@ export function emit(): Map<string, string> {
   ])
 }
 
+/** Stops with an error if a file of the IR does not match its checksum in the manifest, or if the versions differ. */
+export function verifyIr(): void {
+  const manifest = ir('manifest.json') as unknown as { language: string; files: Record<string, string> }
+  if (manifest.language !== LANGUAGE) throw new Error(`The IR is language ${manifest.language}, the package is ${LANGUAGE}`)
+  for (const [name, sum] of Object.entries(manifest.files)) {
+    const actual = crypto.createHash('sha256').update(fs.readFileSync(path.join(IR_DIR, name))).digest('hex')
+    if (actual !== sum) throw new Error(`The IR file ${name} does not match its checksum in the manifest`)
+  }
+}
+
 function main(): void {
   const files = emit()
   if (process.argv.includes('--check')) {
+    verifyIr()
     const diff = [...files].filter(([f, t]) => !fs.existsSync(path.join(ROOT, f)) || fs.readFileSync(path.join(ROOT, f), 'utf8') !== t).map(([f]) => f)
     if (diff.length) {
       console.error(`emit: ${diff.join(', ')} differ from the output of the emitter. Run: yarn emit`)
       process.exit(1)
     }
-    console.log(`emit: the ${files.size} generated files match ir/.`)
+    console.log(`emit: the IR of language ${LANGUAGE} matches its manifest, and the ${files.size} generated files match the IR.`)
     return
   }
   for (const [f, t] of files) {

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "license": "Apache-2.0",
+  "author": "Harnicode",
   "description": "The React package of the Monorithm Experience Language: the components of the language on Base UI, styled with the tokens through Tailwind 4.",
   "type": "module",
   "packageManager": "yarn@4.18.1+sha512.b2e1e7524f654f2749d32b4ebcb4622473cb5bcbc485df2007e12a154e50162a4d795526768bc5f5b8f81717bfd79deb2472813d86fb5ae2eb551fa9c872b08f",
@@ -13,6 +14,7 @@
     "@base-ui/react": "1.9.0"
   },
   "devDependencies": {
+    "@monorithm/design": "github:monorithm/design#tag=v0.2.0",
     "@tailwindcss/cli": "4.3.5",
     "@tailwindcss/vite": "4.3.5",
     "@testing-library/dom": "10.4.2",
@@ -49,19 +51,16 @@
   },
   "files": [
     "dist",
-    "ir",
-    "language.lock",
     "NOTICE"
   ],
   "sideEffects": [
     "*.css"
   ],
   "scripts": {
-    "pin": "node scripts/pin-language.ts",
     "emit": "node emit/emit.ts",
     "build": "tsdown",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
-    "check": "node scripts/pin-language.ts --check && node emit/emit.ts --check"
+    "check": "node emit/emit.ts --check"
   }
 }
