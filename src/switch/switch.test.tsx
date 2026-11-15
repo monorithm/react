@@ -2,11 +2,11 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
-import { violations } from '../../test/axe.ts'
-import { type MomentEvent, MomentProvider } from '../moments/moments.tsx'
-import { Switch } from './Switch.tsx'
+import { violations } from '@monorithm/react/test/axe'
+import { type MomentEvent, MomentProvider } from '@monorithm/react/moments/moments'
+import { Switch } from '@monorithm/react/switch/switch'
 
-const contract = (await import('../../ir/contracts/switch.json', { with: { type: 'json' } })).default
+const contract = (await import('@monorithm/react/ir/contracts/switch.json', { with: { type: 'json' } })).default
 
 describe('Switch', () => {
   it('the tests cover each clause of the contract', () => {

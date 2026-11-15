@@ -1,0 +1,279 @@
+{
+  "id": "button",
+  "name": "Button",
+  "status": "draft",
+  "class": "S",
+  "purpose": "A button starts an action. Six variants share one size scale, one radius, and one focus ring.",
+  "variants": [
+    {
+      "name": "primary",
+      "use": "The first action. Use one primary button on each screen."
+    },
+    {
+      "name": "secondary",
+      "use": "An important second action."
+    },
+    {
+      "name": "outline",
+      "use": "The remaining actions."
+    },
+    {
+      "name": "ghost",
+      "use": "Toolbars, tables, and the Cancel action of a dialog footer."
+    },
+    {
+      "name": "destructive",
+      "use": "An action that removes data. Get a confirmation first."
+    },
+    {
+      "name": "link",
+      "use": "An action in the text, for example View all. It has no loading state."
+    }
+  ],
+  "anatomy": [
+    {
+      "part": "container",
+      "role": "The target, the fill, and the border. The size sets its height"
+    },
+    {
+      "part": "label",
+      "role": "The action, as a verb. Example: Save"
+    },
+    {
+      "part": "icon",
+      "role": "An icon at the start side or at the end side of the label",
+      "optional": true
+    },
+    {
+      "part": "spinner",
+      "role": "The sign of the activity of a loading button",
+      "optional": true
+    }
+  ],
+  "states": [
+    "default",
+    "hover",
+    "focus",
+    "pressed",
+    "disabled",
+    "loading"
+  ],
+  "axes": [
+    "theme",
+    "density",
+    "direction",
+    "motion"
+  ],
+  "tokens": {
+    "sm.height": "size.control-sm",
+    "md.height": "size.control-md",
+    "lg.height": "size.control-lg",
+    "container.radius": "radius.md",
+    "container.target": "size.target-min",
+    "label.size": "font-size.body",
+    "sm.label.size": "font-size.small",
+    "label.color": "color.role.fg",
+    "strong.weight": "font-weight.strong",
+    "icon.size": "size.icon",
+    "primary.fill": "color.role.primary",
+    "primary.fill.hover": "color.role.primary-hover",
+    "primary.label": "color.role.primary-fg",
+    "secondary.fill": "color.role.selected",
+    "secondary.fill.hover": "color.role.pressed",
+    "secondary.border": "color.role.line",
+    "secondary.border.hover": "color.role.line-strong",
+    "outline.border": "color.role.line",
+    "outline.border.hover": "color.role.line-strong",
+    "outline.fill.hover": "color.role.selected",
+    "ghost.fill.hover": "color.role.selected",
+    "pressed.fill": "color.role.pressed",
+    "destructive.fill": "color.role.danger-soft",
+    "destructive.fill.hover": "color.role.danger-soft-strong",
+    "destructive.label": "color.role.danger-text",
+    "link.label": "color.role.accent-text",
+    "link.pressed.opacity": "opacity.link-pressed",
+    "disabled.opacity": "opacity.disabled",
+    "focus.width": "focus.ring-width",
+    "focus.offset": "focus.ring-offset",
+    "focus.color": "color.role.ring",
+    "press.scale": "scale.press",
+    "press.duration": "duration.press",
+    "press.easing": "easing.standard",
+    "color.duration": "duration.fast",
+    "spinner.turn": "duration.spin"
+  },
+  "geometry": {
+    "sm.padding": {
+      "value": 10,
+      "unit": "px"
+    },
+    "md.padding": {
+      "value": 12,
+      "unit": "px"
+    },
+    "lg.padding": {
+      "value": 16,
+      "unit": "px"
+    },
+    "link.padding": {
+      "value": 2,
+      "unit": "px"
+    },
+    "icon.gap": {
+      "value": 6,
+      "unit": "px"
+    },
+    "border": {
+      "value": 1,
+      "unit": "px"
+    },
+    "spinner.stroke": {
+      "value": 2,
+      "unit": "px"
+    }
+  },
+  "moments": [
+    {
+      "moment": "press",
+      "when": "When the user releases the pointer on the button, or presses Enter or Space. Not at pointer down"
+    }
+  ],
+  "clauses": [
+    {
+      "id": "button/role",
+      "level": "MUST",
+      "inputs": [
+        "screen-reader"
+      ],
+      "text": "The accessibility tree shows the control as a button, with the label as its name."
+    },
+    {
+      "id": "button/name",
+      "level": "MUST",
+      "text": "The label tells the action with a verb, for example Save or Mark as shipped. A control with no label that the user can see is an icon button."
+    },
+    {
+      "id": "button/keyboard",
+      "level": "MUST",
+      "inputs": [
+        "keyboard"
+      ],
+      "text": "Tab moves the focus to the button. Enter and Space press the button."
+    },
+    {
+      "id": "button/type",
+      "level": "MUST",
+      "text": "A button in a form does not send the form, unless its type is submit."
+    },
+    {
+      "id": "button/size",
+      "level": "MUST",
+      "text": "The size and the density set the height. Pointer: small 28 px, medium 32 px, large 40 px. Touch: small 36 px, medium 44 px, large 52 px."
+    },
+    {
+      "id": "button/block",
+      "level": "MUST",
+      "text": "A block button has the height of its size and the full width of its container."
+    },
+    {
+      "id": "button/target",
+      "level": "MUST",
+      "inputs": [
+        "pointer",
+        "touch"
+      ],
+      "text": "On each axis, the target is the minimum target of the density or more. A small button in the touch density extends its target past its edges to 44 px."
+    },
+    {
+      "id": "button/variant",
+      "level": "MUST",
+      "text": "The variant sets the fill, the border, and the label color. The primary and the destructive variants have the strong label weight."
+    },
+    {
+      "id": "button/one-primary",
+      "level": "SHOULD",
+      "text": "A screen has one primary button."
+    },
+    {
+      "id": "button/confirm",
+      "level": "SHOULD",
+      "text": "A destructive action gets a confirmation from the user before it removes data."
+    },
+    {
+      "id": "button/hover",
+      "level": "MUST",
+      "inputs": [
+        "pointer"
+      ],
+      "text": "Only a device with hover shows the hover state. On a phone, the button shows only the pressed state."
+    },
+    {
+      "id": "button/press",
+      "level": "MUST",
+      "inputs": [
+        "pointer",
+        "touch"
+      ],
+      "text": "At pointer down, the button scales to 0.97 in 100 ms. A link button does not scale. Its opacity goes to 0.8."
+    },
+    {
+      "id": "button/focus",
+      "level": "MUST",
+      "inputs": [
+        "keyboard",
+        "switch-access"
+      ],
+      "text": "Keyboard focus shows the focus ring of the language on the container: 2 px in the ring color, 2 px from the container. A pointer press shows no ring."
+    },
+    {
+      "id": "button/disabled",
+      "level": "MUST",
+      "text": "A disabled button has the disabled opacity and does not start its action. It stays in the focus order, and its description tells assistive technology why the action is not possible."
+    },
+    {
+      "id": "button/disabled-cause",
+      "level": "SHOULD",
+      "text": "The screen shows the cause of a disabled button near the button."
+    },
+    {
+      "id": "button/loading",
+      "level": "MUST",
+      "text": "A loading button shows a spinner, and its label changes to the activity, for example Saving. It keeps its width and the focus, and it does not start its action again."
+    },
+    {
+      "id": "button/link-loading",
+      "level": "NEVER",
+      "text": "A link button shows a loading state."
+    },
+    {
+      "id": "button/icon",
+      "level": "MUST",
+      "text": "An icon has the icon size of the density and a gap of 6 px to the label. Assistive technology does not read the icon."
+    },
+    {
+      "id": "button/direction",
+      "level": "MUST",
+      "text": "In a right-to-left layout, the start side is the right side. A start icon is at the right of the label."
+    },
+    {
+      "id": "button/motion",
+      "level": "MUST",
+      "text": "With reduced motion, the press has no scale and the spinner does not turn. The change of color stays."
+    },
+    {
+      "id": "button/moment",
+      "level": "MUST",
+      "text": "A press emits the moment press when the user releases the pointer on the button, or presses Enter or Space. A disabled or a loading button emits no moment."
+    },
+    {
+      "id": "button/no-direct-feedback",
+      "level": "NEVER",
+      "text": "The button starts a haptic or a sound directly."
+    },
+    {
+      "id": "button/layout",
+      "level": "SHOULD",
+      "text": "On the web, put the actions at the right end, with the primary action last and 8 px between buttons. On a phone, stack the actions at full width, with the primary action first and 12 px between buttons."
+    }
+  ]
+}

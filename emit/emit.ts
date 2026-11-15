@@ -66,6 +66,7 @@ function css(p: string, e: Entry, value: Json): [string, string][] {
       return [[cssName(p), `${d.value}${d.unit}`]]
     }
     case 'number':
+    case 'fontWeight':
       return [[cssName(p), String(value)]]
     case 'cubicBezier':
       return [[cssName(p), `cubic-bezier(${(value as number[]).join(', ')})`]]
@@ -134,7 +135,8 @@ export function emit(): Map<string, string> {
     }
   }
 
-  // theme.css: the Tailwind 4 theme. A color role becomes --color-mono-<name>, a radius --radius-mono-<name>.
+  // theme.css: the Tailwind 4 theme. A color role becomes --color-mono-<name>, a radius --radius-mono-<name>, a font size
+  // --text-mono-<name>, and a font weight --font-weight-mono-<name>.
   const theme: [string, string][] = []
   for (const p of Object.keys(canonical)) {
     const e = canonical[p] as Entry
@@ -142,6 +144,8 @@ export function emit(): Map<string, string> {
     if (e.type === 'color' && parts[0] === 'color') theme.push([`--color-mono-${parts.slice(parts[1] === 'role' ? 2 : 1).join('-')}`, `var(${cssName(p)})`])
     if (parts[0] === 'radius') theme.push([`--radius-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
     if (e.type === 'shadow') theme.push([`--shadow-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
+    if (parts[0] === 'font-size') theme.push([`--text-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
+    if (e.type === 'fontWeight') theme.push([`--font-weight-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
   }
   const themeCss = `${head('The Tailwind 4 theme. Import it after tailwindcss.')}@theme inline {\n${theme.map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}\n`
 
