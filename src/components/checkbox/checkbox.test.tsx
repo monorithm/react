@@ -5,8 +5,9 @@ import userEvent from '@testing-library/user-event'
 import { useState } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 import { violations } from '@monorithm/react/test/axe'
-import { type MomentEvent, MomentProvider } from '@monorithm/react/moments/moments'
-import { Checkbox } from '@monorithm/react/checkbox/checkbox'
+import { MomentProvider } from '../../contexts/moment-context'
+import { type MomentEvent } from '../../lib/moments'
+import { Checkbox } from './checkbox'
 
 const contract = (await import('@monorithm/react/ir/contracts/checkbox.json', { with: { type: 'json' } })).default
 

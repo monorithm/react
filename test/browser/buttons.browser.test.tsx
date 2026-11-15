@@ -5,9 +5,9 @@
 import type { Browser, Page } from 'playwright-core'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { Button } from '@monorithm/react/button/button'
-import { IconButton } from '@monorithm/react/icon-button/icon-button'
-import { box, cell, openPage, style } from '@monorithm/react/test/browser/harness'
+import { Button } from '../../src/components/button/button'
+import { IconButton } from '../../src/components/icon-button/icon-button'
+import { box, cell, openPage, style } from './harness'
 
 let browser: Browser
 let page: Page

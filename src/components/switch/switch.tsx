@@ -2,8 +2,8 @@
 // The tokens and the geometry of the contract give the look: each size comes from --mono-switch-* (components.css).
 import { Switch as Base } from '@base-ui/react/switch'
 import { type ReactNode, useId } from 'react'
-import { useMoment } from '@monorithm/react/moments/moments'
-import { switchKnob, switchRow, switchTrack } from '@monorithm/react/switch/switch.variants'
+import { useMoment } from '../../hooks/use-moment'
+import { switchKnob, switchRow, switchTrack } from './switch.variants'
 
 export interface SwitchProps {
   /** The name: the item that is on, not an action. "Alerts", not "Disable alerts" (switch/name). */

@@ -7,10 +7,10 @@ import type { Browser, Page } from 'playwright-core'
 import type { ReactNode } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { Checkbox } from '@monorithm/react/checkbox/checkbox'
-import { RadioGroup } from '@monorithm/react/radio-group/radio-group'
-import { Radio } from '@monorithm/react/radio-group/radio-group.radio'
-import { box, cell, openPage, style } from '@monorithm/react/test/browser/harness'
+import { Checkbox } from '../../src/components/checkbox/checkbox'
+import { RadioGroup } from '../../src/components/radio-group/radio-group'
+import { Radio } from '../../src/components/radio-group/radio-group.radio'
+import { box, cell, openPage, style } from './harness'
 
 let browser: Browser
 let page: Page

@@ -44,17 +44,25 @@ Do not edit a file in `src/tokens/`. Change the language source in `monorithm/de
 
 ## The layout of the source
 
-Each component has one folder in `src/`. The file names are in kebab-case.
+| Folder | Contents |
+| --- | --- |
+| `src/components/` | One folder for each component |
+| `src/contexts/` | The contexts that many components use, and their providers, for example `MomentProvider` |
+| `src/hooks/` | The hooks that many components use, for example `useMoment` |
+| `src/lib/` | The helpers and the types that many components use |
+| `src/tokens/` | The generated tokens. Do not edit them |
+
+The file names are in kebab-case. A component folder has these files:
 
 | File | Contents |
 | --- | --- |
 | `<component>.tsx` | The component |
 | `<component>.variants.ts` | The look: the Tailwind classes of the variants, the sizes, and the states |
-| `<component>.<part>.tsx` | A part of the component, for example `radio-group.radio.tsx` or `button.spinner.tsx` |
+| `<component>.<part>.tsx` | A part of the component, for example `radio-group.radio.tsx` or `radio-group.context.ts` |
 | `<component>.test.tsx` | The tests in jsdom |
 | `index.ts` | The exports of the folder |
 
-`src/lib/` has the helpers that the components share. An import uses the absolute path `@monorithm/react/<folder>/<file>`, from the paths of `tsconfig.json`. No import starts with `./` or `../`.
+An import is relative when its path goes up two folders or fewer, for example `./button.spinner` or `../../lib/cx`. A path that goes up three folders or more is absolute: `@monorithm/react/test/axe`. The paths of `tsconfig.json` resolve the absolute imports.
 
 ## The tests
 
@@ -66,3 +74,7 @@ Each component has one folder in `src/`. The file names are in kebab-case.
 ## The text
 
 All text is in ASD-STE100 Simplified Technical English.
+
+## License
+
+The Apache License, Version 2.0 applies to this repository (`LICENSE`). Harnicode is the owner of the name Monorithm, the Monorithm icon, and the related branding (`NOTICE`).
