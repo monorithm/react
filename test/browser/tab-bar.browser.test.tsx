@@ -272,19 +272,18 @@ describe('Tab bar in Chrome', () => {
   })
 
   it('tab-bar/hover: a device with no hover shows no hover state', async () => {
-    // The touch emulation of Chrome gives (hover: none), as on a phone.
-    await cdp.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 })
-    try {
-      expect(await page.evaluate(() => matchMedia('(hover: none)').matches)).toBe(true)
-      const s = nth('touch', 2)
-      await page.hover(s)
-      await page.waitForTimeout(250)
-      expect(await style(page, s, 'color')).toBe('rgb(176, 176, 176)')
-      await page.mouse.move(0, 0)
-    } finally {
-      await cdp.send('Emulation.setTouchEmulationEnabled', { enabled: false })
-    }
-    expect(await page.evaluate(() => matchMedia('(hover: hover)').matches)).toBe(true)
+    // A context with touch gives (hover: none), as on a phone. A second context is reliable on each runner: the touch
+    // emulation of one page does not change its hover media query on each platform.
+    const context = await browser.newContext({ hasTouch: true })
+    const phone = await context.newPage()
+    await phone.setContent(await page.content())
+    expect(await phone.evaluate(() => matchMedia('(hover: hover)').matches)).toBe(false)
+    const s = nth('touch', 2)
+    const b = await box(phone, s)
+    await phone.mouse.move(b.x + b.width / 2, b.y + b.height / 2)
+    await phone.waitForTimeout(250)
+    expect(await style(phone, s, 'color')).toBe('rgb(176, 176, 176)')
+    await context.close()
   })
 
   it('tab-bar/press: at pointer down, the destination scales to 0.97 in 100 ms; at the release it goes back', async () => {
