@@ -1,13 +1,19 @@
 // The Button of the language (contract: ir/contracts/button.json). Base UI gives the behavior and the accessibility.
 // The tokens and the geometry of the contract give the look (button.variants.ts, components.css).
 import { Button as Base } from '@base-ui/react/button'
-import { type MouseEvent, type ReactNode, type Ref, useId } from 'react'
+import { type ButtonHTMLAttributes, type MouseEvent, type ReactNode, type Ref, useId } from 'react'
 import { ButtonSpinner } from './button.spinner'
 import { buttonBase, buttonHeights, buttonIcon, buttonLayer, buttonPaddings, buttonVariants, type Size } from './button.variants'
 import { cx, describedBy } from '@monorithm/react/lib/cx'
 import { useMoment } from '@monorithm/react/hooks/use-moment'
 
-interface CommonProps {
+/**
+ * The other attributes of a button element. The Button passes them to its element, for example the attributes that the
+ * trigger of a menu or a dialog adds (aria-haspopup, aria-expanded, aria-controls).
+ */
+export type ButtonNativeProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'type' | 'onClick' | 'disabled' | 'className' | 'value'>
+
+interface CommonProps extends ButtonNativeProps {
   /** The label: the action, as a verb. "Save", "Mark as shipped" (button/name). */
   children: ReactNode
   size?: Size
@@ -48,7 +54,25 @@ export type ButtonProps = CommonProps &
   )
 
 export function Button(props: ButtonProps) {
-  const { children, size = 'md', block, startIcon, endIcon, disabled, disabledReason, type = 'button', onClick, className, ref } = props
+  const {
+    children,
+    size = 'md',
+    block,
+    startIcon,
+    endIcon,
+    disabled,
+    disabledReason,
+    type = 'button',
+    onClick,
+    className,
+    ref,
+    variant: _variant,
+    loading: _loading,
+    loadingLabel: _loadingLabel,
+    'aria-describedby': describedByProp,
+    // The other attributes (the id, the name, the value, the form, and the attributes of a trigger) go to the element.
+    ...native
+  } = props
   const variant = props.variant ?? 'secondary'
   const loading = variant !== 'link' && props.loading === true
   const emit = useMoment('button')
@@ -56,20 +80,17 @@ export function Button(props: ButtonProps) {
   const reason = disabled && disabledReason ? reasonId : undefined
   return (
     <Base
+      {...native}
       ref={ref}
       data-mono="button"
       data-variant={variant}
       data-size={size}
       data-loading={loading || undefined}
-      id={props.id}
-      name={props.name}
-      value={props.value}
-      form={props.form}
       type={type}
       // button/disabled and button/loading: the button stays in the focus order and keeps the focus. Base UI stops the press.
       disabled={disabled || loading}
       focusableWhenDisabled
-      aria-describedby={describedBy(props['aria-describedby'], reason)}
+      aria-describedby={describedBy(describedByProp, reason)}
       onClick={(event: MouseEvent<HTMLButtonElement>) => {
         // button/moment: the click comes at the release on the button, or at Enter or Space.
         emit('press')

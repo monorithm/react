@@ -79,10 +79,15 @@ function css(p: string, e: Entry, value: Json): [string, string][] {
     case 'cubicBezier':
       return [[cssName(p), `cubic-bezier(${(value as number[]).join(', ')})`]]
     case 'shadow': {
-      const s = value as Record<string, { value: number; unit: string }> & { color: { srgb: number[]; alpha: number } }
-      const [r, g, b] = s.color.srgb.map((x) => Math.round(x * 255))
-      const dim = (k: string): string => `${s[k]?.value}${s[k]?.unit}`
-      return [[cssName(p), `${dim('offsetX')} ${dim('offsetY')} ${dim('blur')} ${dim('spread')} rgb(${r} ${g} ${b} / ${s.color.alpha})`]]
+      // A shadow is one layer or a list of layers. CSS writes the layers with commas, the first layer on top.
+      type Layer = Record<string, { value: number; unit: string }> & { color: { srgb: number[]; alpha: number } }
+      const layer = (s: Layer): string => {
+        const [r, g, b] = s.color.srgb.map((x) => Math.round(x * 255))
+        const dim = (k: string): string => `${s[k]?.value}${s[k]?.unit}`
+        return `${dim('offsetX')} ${dim('offsetY')} ${dim('blur')} ${dim('spread')} rgb(${r} ${g} ${b} / ${s.color.alpha})`
+      }
+      const layers = (Array.isArray(value) ? value : [value]) as unknown as Layer[]
+      return [[cssName(p), layers.map(layer).join(', ')]]
     }
     case 'transition': {
       const t = value as { duration: { value: number; unit: string }; timingFunction: number[] }
@@ -153,9 +158,19 @@ export function emit(): Map<string, string> {
     if (parts[0] === 'radius') theme.push([`--radius-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
     if (e.type === 'shadow') theme.push([`--shadow-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
     if (parts[0] === 'font-size') theme.push([`--text-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
+    // A text size with a line height of the same name gets the pair: text-mono-body sets the two (Tailwind 4).
+    if (parts[0] === 'font-size' && canonical[`line-height.${parts.slice(1).join('.')}`])
+      theme.push([`--text-mono-${parts.slice(1).join('-')}--line-height`, `var(${cssName(`line-height.${parts.slice(1).join('.')}`)})`])
     if (e.type === 'fontWeight') theme.push([`--font-weight-mono-${parts.slice(1).join('-')}`, `var(${cssName(p)})`])
   }
-  const themeCss = `${head('The Tailwind 4 theme. Import it after tailwindcss.')}@theme inline {\n${theme.map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}\n`
+  // The breakpoints: a media query cannot read a custom property, thus each breakpoint is a fixed value in a second
+  // theme block. Tailwind makes the variants of it: mono-tablet: and max-mono-tablet:.
+  const breakpoints = Object.entries(canonical)
+    .filter(([p]) => p.startsWith('breakpoint.'))
+    .map(([p, e]) => [`--breakpoint-mono-${p.split('.').slice(1).join('-')}`, `${(e.value as { value: number }).value}px`])
+  const themeCss =
+    `${head('The Tailwind 4 theme. Import it after tailwindcss.')}@theme inline {\n${theme.map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}\n` +
+    (breakpoints.length ? `\n@theme {\n${breakpoints.map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}\n` : '')
 
   // values.ts
   const values = `${head('The plain values.')}\nexport const language = ${JSON.stringify(manifest.language)} as const\n\nexport const tokens = ${JSON.stringify(canonical, null, 2)} as const\n`

@@ -239,9 +239,9 @@ describe('Button and Icon button in Chrome', () => {
     await page.mouse.up()
   })
 
-  it('button/loading: the button keeps its width, and the spinner turns in 800 ms', async () => {
+  it('button/loading: the button keeps its width, and the spinner turns in 1,000 ms', async () => {
     expect((await box(page, '#loading .busy')).width).toBe((await box(page, '#loading .rest')).width)
-    expect(await style(page, '#loading .busy [data-part="spinner"]', 'animation-duration')).toBe('0.8s')
+    expect(await style(page, '#loading .busy [data-part="spinner"]', 'animation-duration')).toBe('1s')
     expect(await style(page, '#loading .busy [data-part="spinner"]', 'animation-name')).toBe('spin')
   })
 

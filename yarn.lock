@@ -241,10 +241,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monorithm/design@github:monorithm/design#tag=v0.2.0":
-  version: 0.2.0
-  resolution: "@monorithm/design@https://github.com/monorithm/design.git#commit=3d57c4f156cc4836f81267c51a654c4229967750"
-  checksum: 10c0/904b9fc2fa79fccdbdc833b477a1ebdc045dedf7e4da6700dc2e19e9372bbed4fc2bed36e6fb182cc24cb5faef3066da7bf94ecc2b29d5ea57cbc026834d3542
+"@monorithm/design@github:monorithm/design#tag=v0.5.0":
+  version: 0.5.0
+  resolution: "@monorithm/design@https://github.com/monorithm/design.git#commit=fe4f9190a3d892344213b5b77912e7b26b2f9653"
+  checksum: 10c0/bed775998b8c952468acebdaccb81d708df870ca4ebb625f0f5fe388d73446435b9c87d4bb34a632982917a5681257c577e28a2986e29ead1a3467822ebc12b3
   languageName: node
   linkType: hard
 
@@ -253,7 +253,7 @@ __metadata:
   resolution: "@monorithm/react@workspace:."
   dependencies:
     "@base-ui/react": "npm:1.9.0"
-    "@monorithm/design": "github:monorithm/design#tag=v0.2.0"
+    "@monorithm/design": "github:monorithm/design#tag=v0.5.0"
     "@tailwindcss/cli": "npm:4.3.5"
     "@tailwindcss/vite": "npm:4.3.5"
     "@testing-library/dom": "npm:10.4.2"

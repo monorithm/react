@@ -2,12 +2,13 @@
 // (button/button.variants.ts). It is square: the width is the height of its size.
 import { Button as Base } from '@base-ui/react/button'
 import { type MouseEvent, type ReactNode, type Ref, useId } from 'react'
+import type { ButtonNativeProps } from '../button/button'
 import { buttonBase, buttonHeights, buttonVariants, type Size } from '../button/button.variants'
 import { iconButtonWidths } from './icon-button.variants'
 import { cx, describedBy } from '@monorithm/react/lib/cx'
 import { useMoment } from '@monorithm/react/hooks/use-moment'
 
-export interface IconButtonProps {
+export interface IconButtonProps extends ButtonNativeProps {
   /** The accessible name: the action, for example "Search". The icon is not the name (icon-button/name). */
   label: string
   /** The icon. Assistive technology does not read it (icon-button/icon). */
@@ -45,13 +46,16 @@ export function IconButton({
   id,
   className,
   ref,
-  ...rest
+  'aria-describedby': describedByProp,
+  // The other attributes (for example the attributes of a trigger) go to the element.
+  ...native
 }: IconButtonProps) {
   const emit = useMoment('icon-button')
   const reasonId = useId()
   const reason = disabled && disabledReason ? reasonId : undefined
   return (
     <Base
+      {...native}
       ref={ref}
       id={id}
       data-mono="icon-button"
@@ -61,7 +65,7 @@ export function IconButton({
       aria-label={badge ? `${label}, ${badge}` : label}
       disabled={disabled}
       focusableWhenDisabled
-      aria-describedby={describedBy(rest['aria-describedby'], reason)}
+      aria-describedby={describedBy(describedByProp, reason)}
       onClick={(event: MouseEvent<HTMLButtonElement>) => {
         emit('press')
         onClick?.(event)
