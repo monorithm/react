@@ -1,0 +1,182 @@
+{
+  "id": "checkbox",
+  "name": "Checkbox",
+  "status": "draft",
+  "class": "S",
+  "purpose": "A checkbox turns one independent option on or off. A parent checkbox shows the mixed state when some of its options are on.",
+  "anatomy": [
+    {
+      "part": "row",
+      "role": "The target: the box, the label, and the description"
+    },
+    {
+      "part": "box",
+      "role": "The control. Its fill and its mark show the state"
+    },
+    {
+      "part": "mark",
+      "role": "A check for on, a dash for mixed"
+    },
+    {
+      "part": "label",
+      "role": "The name of the option"
+    },
+    {
+      "part": "description",
+      "role": "Help text, the count of a parent checkbox, or the cause when the checkbox is disabled",
+      "optional": true
+    }
+  ],
+  "states": [
+    "off",
+    "on",
+    "mixed",
+    "hover",
+    "focus",
+    "pressed",
+    "disabled"
+  ],
+  "axes": [
+    "theme",
+    "density",
+    "direction",
+    "motion"
+  ],
+  "tokens": {
+    "unit": "size.control-unit",
+    "row.target": "size.target-min",
+    "box.fill": "color.role.surface",
+    "box.border": "color.role.field-line",
+    "on.fill": "color.role.accent",
+    "on.border": "color.role.accent",
+    "mark.color": "color.role.accent-fg",
+    "label.color": "color.role.fg",
+    "label.size": "font-size.body",
+    "description.color": "color.role.fg-muted",
+    "description.size": "font-size.small",
+    "disabled.opacity": "opacity.disabled",
+    "focus.width": "focus.ring-width",
+    "focus.offset": "focus.ring-offset",
+    "focus.color": "color.role.ring",
+    "mark.motion": "spring.control",
+    "color.duration": "duration.fast"
+  },
+  "geometry": {
+    "box.size": {
+      "value": 1,
+      "of": "size.control-unit"
+    },
+    "box.radius": {
+      "value": 0.25,
+      "of": "size.control-unit"
+    },
+    "box.border": {
+      "value": 1,
+      "unit": "px"
+    },
+    "mark.stroke": {
+      "value": 2,
+      "unit": "px"
+    },
+    "row.gap": {
+      "value": 10,
+      "unit": "px"
+    }
+  },
+  "moments": [
+    {
+      "moment": "toggle",
+      "variants": [
+        "on",
+        "off"
+      ],
+      "when": "At the change of the state, not at the end of the mark motion"
+    }
+  ],
+  "clauses": [
+    {
+      "id": "checkbox/role",
+      "level": "MUST",
+      "inputs": [
+        "screen-reader"
+      ],
+      "text": "The accessibility tree shows the control as a checkbox, with the label as its name and its state: off, on, or mixed."
+    },
+    {
+      "id": "checkbox/use",
+      "level": "SHOULD",
+      "text": "Use a checkbox for an independent option, or for a change that waits for a Save button. For one option from a list, use a radio group. For a change that applies immediately, use a switch."
+    },
+    {
+      "id": "checkbox/keyboard",
+      "level": "MUST",
+      "inputs": [
+        "keyboard"
+      ],
+      "text": "When the checkbox has the focus, Space changes the state. Tab moves the focus to the checkbox and away from it."
+    },
+    {
+      "id": "checkbox/target",
+      "level": "MUST",
+      "inputs": [
+        "pointer",
+        "touch"
+      ],
+      "text": "The full row is the target, with the label and the description. In the touch density, the target is 44 px high or more."
+    },
+    {
+      "id": "checkbox/focus",
+      "level": "MUST",
+      "inputs": [
+        "keyboard",
+        "switch-access"
+      ],
+      "text": "Keyboard focus shows the focus ring of the language on the box: 2 px in the ring color, 2 px from the box."
+    },
+    {
+      "id": "checkbox/on-sign",
+      "level": "MUST",
+      "text": "On has the accent fill and a check mark. Off has the surface fill and a border in the field line color. Color is not the only sign of the state."
+    },
+    {
+      "id": "checkbox/mixed",
+      "level": "MUST",
+      "text": "A parent checkbox with a mixed selection shows a dash on the accent fill. Its description gives the count, for example 2 of 3 selected. A press on a mixed checkbox turns it on."
+    },
+    {
+      "id": "checkbox/density",
+      "level": "MUST",
+      "text": "The box follows the control unit of the density: 16 px for pointer, 20 px for touch. The radius is a quarter of the box."
+    },
+    {
+      "id": "checkbox/direction",
+      "level": "MUST",
+      "text": "In a right-to-left layout, the box is at the right of the label."
+    },
+    {
+      "id": "checkbox/motion",
+      "level": "MUST",
+      "text": "The mark grows with spring-control. With reduced motion, the mark shows with no scale, and the change of color stays."
+    },
+    {
+      "id": "checkbox/moment",
+      "level": "MUST",
+      "text": "A change emits the moment toggle with the variant on or off, at the change of the state."
+    },
+    {
+      "id": "checkbox/no-direct-feedback",
+      "level": "NEVER",
+      "text": "The checkbox starts a haptic or a sound directly."
+    },
+    {
+      "id": "checkbox/disabled",
+      "level": "MUST",
+      "text": "A disabled checkbox has the disabled opacity and does not change. Its description tells why the option is not available."
+    },
+    {
+      "id": "checkbox/form",
+      "level": "MUST",
+      "text": "When the checkbox is on, the form sends its value with its name."
+    }
+  ]
+}

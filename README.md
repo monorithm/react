@@ -2,7 +2,7 @@
 
 The React package of the Monorithm Experience Language. It gives the components of the language on Base UI, styled with the tokens of the language through Tailwind 4.
 
-At this time the package has one component, the Switch. It is the spike S4 of the plan: one component end to end. A test examines each clause of its contract. The other 19 components of version 1 follow in the order of the list in `monorithm/design` (`contracts/v1-components.md`).
+At this time the package has five components: the Switch, the Button, the Icon button, the Checkbox, and the Radio group. A test examines each clause of the contract of each component. The other 15 components of version 1 follow in the order of the list in `monorithm/design` (`contracts/v1-components.md`).
 
 ## Use the package
 
@@ -22,10 +22,11 @@ The package is not on npm at this time.
 3. Use a component. Give a `MomentProvider` to apply the haptics and the sounds of the moments:
 
 ```tsx
-import { MomentProvider, Switch } from '@monorithm/react'
+import { Button, MomentProvider, Switch } from '@monorithm/react'
 
 <MomentProvider onMoment={(e) => console.log(e.moment, e.variant)}>
   <Switch label="Alerts" description="Get a message for each new order" />
+  <Button variant="primary">Save</Button>
 </MomentProvider>
 ```
 
@@ -41,12 +42,26 @@ The axes of the language: `data-theme` (`dark`, `light`) and `data-density` (`po
 
 Do not edit a file in `src/tokens/`. Change the language source in `monorithm/design`, then pin and emit again.
 
+## The layout of the source
+
+Each component has one folder in `src/`. The file names are in kebab-case.
+
+| File | Contents |
+| --- | --- |
+| `<component>.tsx` | The component |
+| `<component>.variants.ts` | The look: the Tailwind classes of the variants, the sizes, and the states |
+| `<component>.<part>.tsx` | A part of the component, for example `radio-group.radio.tsx` or `button.spinner.tsx` |
+| `<component>.test.tsx` | The tests in jsdom |
+| `index.ts` | The exports of the folder |
+
+`src/lib/` has the helpers that the components share. An import uses the absolute path `@monorithm/react/<folder>/<file>`, from the paths of `tsconfig.json`. No import starts with `./` or `../`.
+
 ## The tests
 
 `yarn test` runs two kinds of tests. Each test name starts with the id of a clause of the contract, for example `switch/keyboard`.
 
 - In jsdom: the role, the name, the keyboard, the target, the moment, the disabled state, and an axe audit.
-- In the Chrome of the computer: the sizes of each density, the right-to-left layout, the focus ring, the colors of each theme, and the motion. These tests compile the real CSS with Tailwind and measure the rendered Switch.
+- In the Chrome of the computer: the sizes of each density, the right-to-left layout, and the focus ring. Also the colors of each theme, the states, and the motion. These tests compile the real CSS with Tailwind and measure the rendered components.
 
 ## The text
 

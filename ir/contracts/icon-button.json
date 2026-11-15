@@ -1,0 +1,215 @@
+{
+  "id": "icon-button",
+  "name": "Icon button",
+  "status": "draft",
+  "class": "S",
+  "purpose": "An icon button starts an action with an icon and with no label that the user can see. It is square, and it uses the size scale of the button.",
+  "variants": [
+    {
+      "name": "ghost",
+      "use": "Toolbars. The default."
+    },
+    {
+      "name": "outline",
+      "use": "An action next to outline buttons, for example Edit."
+    },
+    {
+      "name": "secondary",
+      "use": "An action next to secondary buttons."
+    },
+    {
+      "name": "round",
+      "use": "Search and the account, on the raised fill. Use it only for these two actions."
+    }
+  ],
+  "anatomy": [
+    {
+      "part": "container",
+      "role": "The target and the fill. Its width is the same as its height"
+    },
+    {
+      "part": "icon",
+      "role": "The sign of the action. The accessible name tells the action"
+    },
+    {
+      "part": "badge",
+      "role": "A dot at the top end corner. It shows new items",
+      "optional": true
+    }
+  ],
+  "states": [
+    "default",
+    "hover",
+    "focus",
+    "pressed",
+    "disabled"
+  ],
+  "axes": [
+    "theme",
+    "density",
+    "direction",
+    "motion"
+  ],
+  "tokens": {
+    "sm.size": "size.control-sm",
+    "md.size": "size.control-md",
+    "lg.size": "size.control-lg",
+    "container.radius": "radius.md",
+    "round.radius": "radius.full",
+    "container.target": "size.target-min",
+    "icon.size": "size.icon",
+    "icon.color": "color.role.fg",
+    "ghost.fill.hover": "color.role.selected",
+    "outline.border": "color.role.line",
+    "outline.border.hover": "color.role.line-strong",
+    "outline.fill.hover": "color.role.selected",
+    "secondary.fill": "color.role.selected",
+    "secondary.fill.hover": "color.role.pressed",
+    "secondary.border": "color.role.line",
+    "round.fill": "color.role.raised",
+    "round.fill.hover": "color.role.selected",
+    "round.icon": "color.role.fg-2",
+    "pressed.fill": "color.role.pressed",
+    "badge.fill": "color.role.accent",
+    "badge.ring": "color.role.bg",
+    "disabled.opacity": "opacity.disabled",
+    "focus.width": "focus.ring-width",
+    "focus.offset": "focus.ring-offset",
+    "focus.color": "color.role.ring",
+    "press.scale": "scale.press-icon",
+    "press.duration": "duration.press",
+    "press.easing": "easing.standard",
+    "color.duration": "duration.fast"
+  },
+  "geometry": {
+    "badge.size": {
+      "value": 8,
+      "unit": "px"
+    },
+    "badge.inset": {
+      "value": 6,
+      "unit": "px"
+    },
+    "badge.ring": {
+      "value": 2,
+      "unit": "px"
+    },
+    "border": {
+      "value": 1,
+      "unit": "px"
+    }
+  },
+  "moments": [
+    {
+      "moment": "press",
+      "when": "When the user releases the pointer on the icon button, or presses Enter or Space. Not at pointer down"
+    }
+  ],
+  "clauses": [
+    {
+      "id": "icon-button/role",
+      "level": "MUST",
+      "inputs": [
+        "screen-reader"
+      ],
+      "text": "The accessibility tree shows the control as a button, with the accessible name as its name."
+    },
+    {
+      "id": "icon-button/name",
+      "level": "MUST",
+      "inputs": [
+        "screen-reader",
+        "voice"
+      ],
+      "text": "Each icon button has an accessible name that tells the action, for example Search. The icon is not the name."
+    },
+    {
+      "id": "icon-button/keyboard",
+      "level": "MUST",
+      "inputs": [
+        "keyboard"
+      ],
+      "text": "Tab moves the focus to the icon button. Enter and Space press it."
+    },
+    {
+      "id": "icon-button/square",
+      "level": "MUST",
+      "text": "The width is the same as the height. The size and the density set the two: the heights of the button sizes."
+    },
+    {
+      "id": "icon-button/target",
+      "level": "MUST",
+      "inputs": [
+        "pointer",
+        "touch"
+      ],
+      "text": "On each axis, the target is the minimum target of the density or more. A small icon button in the touch density extends its target past its edges to 44 px."
+    },
+    {
+      "id": "icon-button/icon",
+      "level": "MUST",
+      "text": "The icon has the icon size of the density, at the center of the container. Assistive technology does not read the icon."
+    },
+    {
+      "id": "icon-button/round",
+      "level": "SHOULD",
+      "text": "Use the round variant only for search and for the account."
+    },
+    {
+      "id": "icon-button/badge",
+      "level": "MUST",
+      "text": "A dot badge of 8 px shows new items. It is 6 px from the top edge and from the end edge, with a ring of 2 px in the background color. The accessible name tells that there are new items."
+    },
+    {
+      "id": "icon-button/direction",
+      "level": "MUST",
+      "text": "In a right-to-left layout, the badge is at the top left corner."
+    },
+    {
+      "id": "icon-button/hover",
+      "level": "MUST",
+      "inputs": [
+        "pointer"
+      ],
+      "text": "Only a device with hover shows the hover state."
+    },
+    {
+      "id": "icon-button/press",
+      "level": "MUST",
+      "inputs": [
+        "pointer",
+        "touch"
+      ],
+      "text": "At pointer down, the icon button scales to 0.96 in 100 ms."
+    },
+    {
+      "id": "icon-button/focus",
+      "level": "MUST",
+      "inputs": [
+        "keyboard",
+        "switch-access"
+      ],
+      "text": "Keyboard focus shows the focus ring of the language on the container: 2 px in the ring color, 2 px from the container."
+    },
+    {
+      "id": "icon-button/disabled",
+      "level": "MUST",
+      "text": "A disabled icon button has the disabled opacity and does not start its action. It stays in the focus order, and its description tells assistive technology why the action is not possible."
+    },
+    {
+      "id": "icon-button/motion",
+      "level": "MUST",
+      "text": "With reduced motion, the press has no scale. The change of color stays."
+    },
+    {
+      "id": "icon-button/moment",
+      "level": "MUST",
+      "text": "A press emits the moment press when the user releases the pointer on the icon button, or presses Enter or Space. A disabled icon button emits no moment."
+    },
+    {
+      "id": "icon-button/no-direct-feedback",
+      "level": "NEVER",
+      "text": "The icon button starts a haptic or a sound directly."
+    }
+  ]
+}

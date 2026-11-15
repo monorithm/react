@@ -11,7 +11,7 @@ import path from 'node:path'
 import { type Browser, chromium, type Page } from 'playwright-core'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { Switch } from '../../src/switch/Switch.tsx'
+import { Switch } from '@monorithm/react/switch/switch'
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..')
 let browser: Browser

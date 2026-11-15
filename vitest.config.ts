@@ -2,6 +2,8 @@ import { defineConfig } from 'vitest/config'
 
 // The tests run in jsdom. Each test name of a component starts with the id of the clause of its contract.
 export default defineConfig({
+  // The absolute imports (@monorithm/react/...) come from the paths of tsconfig.json.
+  resolve: { tsconfigPaths: true },
   test: {
     environment: 'jsdom',
     globals: true,

@@ -1,0 +1,215 @@
+{
+  "id": "radio-group",
+  "name": "Radio group",
+  "status": "draft",
+  "class": "S",
+  "purpose": "A radio group selects one option from a list. Option cards are the variant for choices with a price or a time.",
+  "variants": [
+    {
+      "name": "list",
+      "use": "A list of rows. The default."
+    },
+    {
+      "name": "cards",
+      "use": "Option cards: choices with a price or a time, for example a delivery method or a plan."
+    }
+  ],
+  "anatomy": [
+    {
+      "part": "group",
+      "role": "The options and the name of the group, for example Delivery method"
+    },
+    {
+      "part": "option",
+      "role": "The target: a row, or a card in the cards variant"
+    },
+    {
+      "part": "ring",
+      "role": "The control of an option. Its border and its dot show the state"
+    },
+    {
+      "part": "dot",
+      "role": "The sign of the selected option"
+    },
+    {
+      "part": "label",
+      "role": "The name of the option"
+    },
+    {
+      "part": "description",
+      "role": "Help text, or the cause when the option is disabled",
+      "optional": true
+    },
+    {
+      "part": "detail",
+      "role": "A value at the end side of a card, for example a price",
+      "optional": true
+    }
+  ],
+  "states": [
+    "default",
+    "selected",
+    "hover",
+    "focus",
+    "pressed",
+    "disabled"
+  ],
+  "axes": [
+    "theme",
+    "density",
+    "direction",
+    "motion"
+  ],
+  "tokens": {
+    "unit": "size.control-unit",
+    "option.target": "size.target-min",
+    "ring.fill": "color.role.surface",
+    "ring.border": "color.role.field-line",
+    "selected.border": "color.role.accent",
+    "dot.fill": "color.role.accent",
+    "label.color": "color.role.fg",
+    "label.size": "font-size.body",
+    "description.color": "color.role.fg-muted",
+    "description.size": "font-size.small",
+    "detail.color": "color.role.fg-strong",
+    "card.fill": "color.role.surface",
+    "card.border": "color.role.line",
+    "card.border.hover": "color.role.line-strong",
+    "card.selected.border": "color.role.accent",
+    "card.selected.fill": "color.role.accent-soft",
+    "card.radius": "radius.lg",
+    "disabled.opacity": "opacity.disabled",
+    "focus.width": "focus.ring-width",
+    "focus.offset": "focus.ring-offset",
+    "focus.color": "color.role.ring",
+    "dot.motion": "spring.control",
+    "dot.motion.keyboard": "spring.quick",
+    "color.duration": "duration.fast"
+  },
+  "geometry": {
+    "ring.size": {
+      "value": 1,
+      "of": "size.control-unit"
+    },
+    "dot.size": {
+      "value": 0.375,
+      "of": "size.control-unit"
+    },
+    "ring.border": {
+      "value": 1,
+      "unit": "px"
+    },
+    "option.gap": {
+      "value": 10,
+      "unit": "px"
+    },
+    "card.gap": {
+      "value": 12,
+      "unit": "px"
+    },
+    "card.padding-block": {
+      "value": 14,
+      "unit": "px"
+    },
+    "card.padding-inline": {
+      "value": 16,
+      "unit": "px"
+    },
+    "cards.gap": {
+      "value": 10,
+      "unit": "px"
+    }
+  },
+  "moments": [
+    {
+      "moment": "select",
+      "when": "At the change of the selection, not at the end of the dot motion"
+    }
+  ],
+  "clauses": [
+    {
+      "id": "radio-group/role",
+      "level": "MUST",
+      "inputs": [
+        "screen-reader"
+      ],
+      "text": "The accessibility tree shows a radio group with its name. Each option is a radio button, with its label as its name and its state."
+    },
+    {
+      "id": "radio-group/name",
+      "level": "MUST",
+      "text": "The group has a name, for example Delivery method."
+    },
+    {
+      "id": "radio-group/use",
+      "level": "SHOULD",
+      "text": "Use a radio group for one option from a list. For independent options, use checkboxes."
+    },
+    {
+      "id": "radio-group/keyboard",
+      "level": "MUST",
+      "inputs": [
+        "keyboard"
+      ],
+      "text": "Tab moves the focus into the group, to the selected option, and out of the group. The arrow keys move the focus and the selection to the next or the previous option."
+    },
+    {
+      "id": "radio-group/target",
+      "level": "MUST",
+      "inputs": [
+        "pointer",
+        "touch"
+      ],
+      "text": "The full row or the full card is the target. In the touch density, the target is 44 px high or more."
+    },
+    {
+      "id": "radio-group/focus",
+      "level": "MUST",
+      "inputs": [
+        "keyboard",
+        "switch-access"
+      ],
+      "text": "Keyboard focus shows the focus ring of the language: on the ring of a row, or on the full card. 2 px in the ring color, 2 px from the edge."
+    },
+    {
+      "id": "radio-group/selected-sign",
+      "level": "MUST",
+      "text": "The selected option has an accent border on the ring and an accent dot. A selected card also has an accent border and the accent tint. Color is not the only sign of the state."
+    },
+    {
+      "id": "radio-group/density",
+      "level": "MUST",
+      "text": "The ring follows the control unit of the density: 16 px for pointer, 20 px for touch. The dot is 0.375 of the ring."
+    },
+    {
+      "id": "radio-group/direction",
+      "level": "MUST",
+      "text": "In a right-to-left layout, the ring is at the right of the label, and the detail of a card is at the left."
+    },
+    {
+      "id": "radio-group/motion",
+      "level": "MUST",
+      "text": "The dot grows with spring-control. When the keyboard moves the selection, the dot grows with spring-quick. With reduced motion, the dot shows with no scale, and the change of color stays."
+    },
+    {
+      "id": "radio-group/moment",
+      "level": "MUST",
+      "text": "A change of the selection emits the moment select, at the change."
+    },
+    {
+      "id": "radio-group/no-direct-feedback",
+      "level": "NEVER",
+      "text": "The radio group starts a haptic or a sound directly."
+    },
+    {
+      "id": "radio-group/disabled",
+      "level": "MUST",
+      "text": "A disabled option has the disabled opacity, and the user cannot select it. Its description tells why it is not available, for example Not available in your area at this time."
+    },
+    {
+      "id": "radio-group/form",
+      "level": "MUST",
+      "text": "The form sends the value of the selected option with the name of the group."
+    }
+  ]
+}
