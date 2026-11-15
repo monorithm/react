@@ -13,7 +13,7 @@ export const buttonVariants = {
     '[--btn-fill:var(--mono-color-role-selected)] [--btn-fill-hover:var(--mono-color-role-pressed)] [--btn-fill-pressed:var(--mono-color-role-pressed)] [--btn-border:var(--mono-color-role-line)] [--btn-border-hover:var(--mono-color-role-line-strong)]',
   outline:
     '[--btn-fill-hover:var(--mono-color-role-selected)] [--btn-fill-pressed:var(--mono-color-role-pressed)] [--btn-border:var(--mono-color-role-line)] [--btn-border-hover:var(--mono-color-role-line-strong)]',
-  ghost: '[--btn-fill-hover:var(--mono-color-role-selected)] [--btn-fill-pressed:var(--mono-color-role-pressed)]',
+  ghost: '[--btn-fill-hover:var(--mono-color-role-hover)] [--btn-fill-pressed:var(--mono-color-role-pressed)]',
   destructive:
     'font-mono-strong [--btn-fill:var(--mono-color-role-danger-soft)] [--btn-fill-hover:var(--mono-color-role-danger-soft-strong)] [--btn-label:var(--mono-color-role-danger-text)]',
   // The link: no fill, the accent text, and an underline at hover. It has no --btn-press, thus no scale. Its opacity goes

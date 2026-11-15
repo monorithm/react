@@ -263,4 +263,15 @@ describe('Button', () => {
   it('button/layout: the order of the actions is a rule for the screen (review)', () => {
     expect(contract.clauses.find((c: { id: string }) => c.id === 'button/layout')?.level).toBe('SHOULD')
   })
+
+  it('button/role: the button gives the attributes of a trigger to its element', () => {
+    render(
+      <Button aria-haspopup="menu" aria-expanded={false} aria-controls="actions" data-testid="trigger">
+        Actions
+      </Button>,
+    )
+    const button = screen.getByRole('button', { name: 'Actions' })
+    expect([button.getAttribute('aria-haspopup'), button.getAttribute('aria-expanded'), button.getAttribute('aria-controls')]).toEqual(['menu', 'false', 'actions'])
+    expect(button.dataset.testid).toBe('trigger')
+  })
 })

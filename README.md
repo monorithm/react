@@ -2,7 +2,16 @@
 
 The React package of the Monorithm Experience Language. It gives the components of the language on Base UI, styled with the tokens of the language through Tailwind 4.
 
-At this time the package has five components: the Switch, the Button, the Icon button, the Checkbox, and the Radio group. A test examines each clause of the contract of each component. The other 15 components of version 1 follow in the order of the list in `monorithm/design` (`contracts/v1-components.md`).
+The package has the 20 components of version 1 of the language. A test examines each clause of the contract of each component.
+
+| Group | Components |
+| --- | --- |
+| Actions | `Button`, `IconButton`, `Chip` and `ChipGroup`, `SegmentedControl` |
+| Forms | `TextField`, `Select`, `Checkbox`, `RadioGroup` and `Radio`, `Switch`, `CodeEntry` |
+| Status and data | `ProgressBar`, `Spinner`, `Skeleton`, `Alert`, `Avatar`, `AvatarGroup`, `AvatarButton`, `Card` and its parts |
+| Navigation | `Tabs`, `TabBar` |
+| Overlays | `Menu`, `Dialog`, `BottomSheet`, `ToastProvider` and `useToast` |
+| Moments | `MomentProvider`, `useMoment` |
 
 ## Use the package
 

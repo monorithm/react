@@ -152,4 +152,10 @@ describe('IconButton', () => {
     await userEvent.setup().click(screen.getByRole('button'))
     expect(vibrate).not.toHaveBeenCalled()
   })
+
+  it('icon-button/role: the icon button gives the attributes of a trigger to its element', () => {
+    render(<IconButton label="More actions" icon={<Bell />} aria-haspopup="menu" aria-expanded />)
+    const button = screen.getByRole('button', { name: 'More actions' })
+    expect([button.getAttribute('aria-haspopup'), button.getAttribute('aria-expanded')]).toEqual(['menu', 'true'])
+  })
 })
