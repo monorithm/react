@@ -1,6 +1,6 @@
 // The spinner of a loading button (button/loading). It does not turn with reduced motion (button/motion).
-import { cx } from '@monorithm/react/lib/cx'
-import { buttonIcon } from '@monorithm/react/button/button.variants'
+import { cx } from '../../lib/cx'
+import { buttonIcon } from './button.variants'
 
 /** The spinner of a loading button. It does not turn with reduced motion (button/motion). */
 export function ButtonSpinner() {

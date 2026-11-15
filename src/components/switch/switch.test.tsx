@@ -3,8 +3,9 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { violations } from '@monorithm/react/test/axe'
-import { type MomentEvent, MomentProvider } from '@monorithm/react/moments/moments'
-import { Switch } from '@monorithm/react/switch/switch'
+import { MomentProvider } from '../../contexts/moment-context'
+import { type MomentEvent } from '../../lib/moments'
+import { Switch } from './switch'
 
 const contract = (await import('@monorithm/react/ir/contracts/switch.json', { with: { type: 'json' } })).default
 

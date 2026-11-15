@@ -7,8 +7,9 @@
 - Each test of a component starts its name with the id of a clause of the contract of the component.
 - A component emits a moment with `useMoment`. It never starts a haptic or a sound directly.
 - Use Yarn Berry.
-- Give each component one folder in `src/`, with kebab-case file names: `<component>.tsx`, `<component>.variants.ts`, `<component>.<part>.tsx`, `<component>.test.tsx`, and `index.ts`.
-- Use the absolute imports `@monorithm/react/...`. Do not use an import that starts with `./` or `../`.
+- Put each component in one folder in `src/components/`, with kebab-case file names: `<component>.tsx`, `<component>.variants.ts`, `<component>.<part>.tsx`, `<component>.test.tsx`, and `index.ts`.
+- Put shared code in `src/contexts/`, `src/hooks/`, and `src/lib/`.
+- Use a relative import when the path goes up two folders or fewer. Use `@monorithm/react/...` for a longer path.
 - The repository is public. Do not add these items:
   - A private name
   - The ID of a decision or of a private process

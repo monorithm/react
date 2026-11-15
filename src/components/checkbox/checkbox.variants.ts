@@ -1,5 +1,5 @@
 // The look of the Checkbox (contract: ir/contracts/checkbox.json): each size comes from --mono-checkbox-*.
-import { FOCUS } from '@monorithm/react/lib/row'
+import { FOCUS } from '../../lib/row'
 
 /** The box: the control. */
 export const checkboxBox = [

@@ -2,10 +2,10 @@
 // The tokens and the geometry of the contract give the look (button.variants.ts, components.css).
 import { Button as Base } from '@base-ui/react/button'
 import { type MouseEvent, type ReactNode, type Ref, useId } from 'react'
-import { ButtonSpinner } from '@monorithm/react/button/button.spinner'
-import { buttonBase, buttonHeights, buttonIcon, buttonLayer, buttonPaddings, buttonVariants, type Size } from '@monorithm/react/button/button.variants'
-import { cx, describedBy } from '@monorithm/react/lib/cx'
-import { useMoment } from '@monorithm/react/moments/moments'
+import { ButtonSpinner } from './button.spinner'
+import { buttonBase, buttonHeights, buttonIcon, buttonLayer, buttonPaddings, buttonVariants, type Size } from './button.variants'
+import { cx, describedBy } from '../../lib/cx'
+import { useMoment } from '../../hooks/use-moment'
 
 interface CommonProps {
   /** The label: the action, as a verb. "Save", "Mark as shipped" (button/name). */
