@@ -1,0 +1,6 @@
+/* The CSS of the browser test: Tailwind 4 with the theme, the tokens, and the geometry of the contracts. */
+@import "tailwindcss";
+@import "../../src/tokens/theme.css";
+@import "../../src/tokens/tokens.css";
+@import "../../src/tokens/components.css";
+@source "../../src";

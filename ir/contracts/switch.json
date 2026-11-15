@@ -1,0 +1,176 @@
+{
+  "id": "switch",
+  "name": "Switch",
+  "status": "draft",
+  "class": "S",
+  "purpose": "A switch turns one item on or off. The change applies immediately.",
+  "anatomy": [
+    {
+      "part": "row",
+      "role": "The target: the label, the description, and the track"
+    },
+    {
+      "part": "track",
+      "role": "The control. Its fill shows the state"
+    },
+    {
+      "part": "knob",
+      "role": "Moves to the end side for on, to the start side for off"
+    },
+    {
+      "part": "label",
+      "role": "The name: the item that is on"
+    },
+    {
+      "part": "description",
+      "role": "Help text, or the cause when the switch is disabled",
+      "optional": true
+    }
+  ],
+  "states": [
+    "off",
+    "on",
+    "hover",
+    "focus",
+    "pressed",
+    "disabled"
+  ],
+  "axes": [
+    "theme",
+    "density",
+    "direction",
+    "motion"
+  ],
+  "tokens": {
+    "track.off.fill": "color.role.pressed",
+    "track.off.ring": "color.role.line-strong",
+    "track.on.fill": "color.role.accent",
+    "knob.off.fill": "color.switch.knob-off",
+    "knob.on.fill": "color.switch.knob-on",
+    "knob.shadow": "shadow.knob",
+    "track.radius": "radius.full",
+    "unit": "size.control-unit",
+    "row.target": "size.target-min",
+    "disabled.opacity": "opacity.disabled",
+    "focus.width": "focus.ring-width",
+    "focus.offset": "focus.ring-offset",
+    "focus.color": "color.role.ring",
+    "knob.motion": "spring.control",
+    "knob.motion.reduced": "duration.slide",
+    "label.color": "color.role.fg-strong",
+    "description.color": "color.role.fg"
+  },
+  "geometry": {
+    "track.width": {
+      "value": 2.25,
+      "of": "size.control-unit"
+    },
+    "track.height": {
+      "value": 1.25,
+      "of": "size.control-unit"
+    },
+    "knob.size": {
+      "value": 1,
+      "of": "size.control-unit"
+    },
+    "knob.inset": {
+      "value": 2,
+      "unit": "px"
+    },
+    "knob.travel": {
+      "value": 1,
+      "of": "size.control-unit"
+    }
+  },
+  "moments": [
+    {
+      "moment": "toggle",
+      "variants": [
+        "on",
+        "off"
+      ],
+      "when": "At the change of the state, not at the end of the knob motion"
+    }
+  ],
+  "clauses": [
+    {
+      "id": "switch/role",
+      "level": "MUST",
+      "inputs": [
+        "screen-reader"
+      ],
+      "text": "The accessibility tree shows the control as a switch, with the label as its name and the on or off state."
+    },
+    {
+      "id": "switch/name",
+      "level": "MUST",
+      "text": "The label names the item that is on, not an action. Example: Alerts, not Disable alerts."
+    },
+    {
+      "id": "switch/immediate",
+      "level": "MUST",
+      "text": "The change applies immediately. If a change must wait for a Save button, use a checkbox."
+    },
+    {
+      "id": "switch/keyboard",
+      "level": "MUST",
+      "inputs": [
+        "keyboard"
+      ],
+      "text": "When the switch has the focus, Space changes the state. Tab moves the focus to the switch and away from it."
+    },
+    {
+      "id": "switch/target",
+      "level": "MUST",
+      "inputs": [
+        "pointer",
+        "touch"
+      ],
+      "text": "The full row is the target, with the label and the description. In the touch density, the target is 44 px high or more."
+    },
+    {
+      "id": "switch/focus",
+      "level": "MUST",
+      "inputs": [
+        "keyboard",
+        "switch-access"
+      ],
+      "text": "The focus ring of the language shows on the track: 2 px in the ring color, 2 px from the track."
+    },
+    {
+      "id": "switch/on-sign",
+      "level": "MUST",
+      "text": "On has the accent fill and the knob at the end side. Color is not the only sign of the state."
+    },
+    {
+      "id": "switch/direction",
+      "level": "MUST",
+      "text": "In a right-to-left layout, the end side is the left side. The knob moves to the left for on."
+    },
+    {
+      "id": "switch/motion",
+      "level": "MUST",
+      "text": "The knob moves with spring-control. With reduced motion, the knob changes position with no movement, and the change of color stays."
+    },
+    {
+      "id": "switch/moment",
+      "level": "MUST",
+      "text": "A change emits the moment toggle with the variant on or off, at the change of the state."
+    },
+    {
+      "id": "switch/no-direct-feedback",
+      "level": "NEVER",
+      "text": "The switch starts a haptic or a sound directly."
+    },
+    {
+      "id": "switch/disabled",
+      "level": "MUST",
+      "text": "A disabled switch has the disabled opacity and does not change. Its description tells why the change is not possible."
+    },
+    {
+      "id": "switch/density",
+      "level": "MUST",
+      "text": "The track, the knob, and the travel follow the control unit of the density: 16 px for pointer, 20 px for touch."
+    }
+  ]
+}

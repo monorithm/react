@@ -1,4 +1,65 @@
 {
-  "name": "react",
-  "packageManager": "yarn@4.18.1"
+  "name": "@monorithm/react",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The React package of the Monorithm Experience Language: the components of the language on Base UI, styled with the tokens through Tailwind 4.",
+  "type": "module",
+  "packageManager": "yarn@4.18.1+sha512.b2e1e7524f654f2749d32b4ebcb4622473cb5bcbc485df2007e12a154e50162a4d795526768bc5f5b8f81717bfd79deb2472813d86fb5ae2eb551fa9c872b08f",
+  "engines": {
+    "node": ">=26.13.0"
+  },
+  "dependencies": {
+    "@base-ui/react": "1.9.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.5",
+    "@tailwindcss/vite": "4.3.5",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.10",
+    "@types/node": "26",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "axe-core": "4.14.0",
+    "jsdom": "31.0.1",
+    "playwright-core": "1.65.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tailwindcss": "4.3.5",
+    "tsdown": "0.23.7",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
+  },
+  "peerDependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./components.css": "./dist/components.css",
+    "./theme.css": "./dist/theme.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "ir",
+    "language.lock"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "pin": "node scripts/pin-language.ts",
+    "emit": "node emit/emit.ts",
+    "build": "tsdown",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json",
+    "check": "node scripts/pin-language.ts --check && node emit/emit.ts --check"
+  }
 }

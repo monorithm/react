@@ -1,0 +1,16 @@
+{
+  "theme": {
+    "contexts": [
+      "dark",
+      "light"
+    ],
+    "default": "dark"
+  },
+  "density": {
+    "contexts": [
+      "pointer",
+      "touch"
+    ],
+    "default": "pointer"
+  }
+}

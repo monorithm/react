@@ -1,0 +1,654 @@
+{
+  "color.blue.400": {
+    "type": "color",
+    "description": "The accent of the dark theme",
+    "value": {
+      "hex": "#5ca3ff",
+      "srgb": [
+        0.3608,
+        0.6392,
+        1
+      ],
+      "alpha": 1
+    }
+  },
+  "color.blue.600": {
+    "type": "color",
+    "description": "The accent of the light theme",
+    "value": {
+      "hex": "#1f6fe0",
+      "srgb": [
+        0.1216,
+        0.4353,
+        0.8784
+      ],
+      "alpha": 1
+    }
+  },
+  "color.blue.650": {
+    "type": "color",
+    "description": "The accent text of the light theme",
+    "value": {
+      "hex": "#1a62cc",
+      "srgb": [
+        0.102,
+        0.3843,
+        0.8
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.0": {
+    "type": "color",
+    "value": {
+      "hex": "#ffffff",
+      "srgb": [
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.100": {
+    "type": "color",
+    "value": {
+      "hex": "#ebebeb",
+      "srgb": [
+        0.9216,
+        0.9216,
+        0.9216
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.150": {
+    "type": "color",
+    "value": {
+      "hex": "#e0e0e0",
+      "srgb": [
+        0.8784,
+        0.8784,
+        0.8784
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.200": {
+    "type": "color",
+    "value": {
+      "hex": "#c4c4c4",
+      "srgb": [
+        0.7686,
+        0.7686,
+        0.7686
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.25": {
+    "type": "color",
+    "value": {
+      "hex": "#fafafa",
+      "srgb": [
+        0.9804,
+        0.9804,
+        0.9804
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.300": {
+    "type": "color",
+    "value": {
+      "hex": "#b0b0b0",
+      "srgb": [
+        0.6902,
+        0.6902,
+        0.6902
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.400": {
+    "type": "color",
+    "value": {
+      "hex": "#9e9e9e",
+      "srgb": [
+        0.6196,
+        0.6196,
+        0.6196
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.50": {
+    "type": "color",
+    "value": {
+      "hex": "#f5f5f5",
+      "srgb": [
+        0.9608,
+        0.9608,
+        0.9608
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.500": {
+    "type": "color",
+    "value": {
+      "hex": "#6b6b6b",
+      "srgb": [
+        0.4196,
+        0.4196,
+        0.4196
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.600": {
+    "type": "color",
+    "value": {
+      "hex": "#525252",
+      "srgb": [
+        0.3216,
+        0.3216,
+        0.3216
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.700": {
+    "type": "color",
+    "value": {
+      "hex": "#484848",
+      "srgb": [
+        0.2824,
+        0.2824,
+        0.2824
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.750": {
+    "type": "color",
+    "value": {
+      "hex": "#2e2e2e",
+      "srgb": [
+        0.1804,
+        0.1804,
+        0.1804
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.800": {
+    "type": "color",
+    "value": {
+      "hex": "#252525",
+      "srgb": [
+        0.1451,
+        0.1451,
+        0.1451
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.850": {
+    "type": "color",
+    "value": {
+      "hex": "#1e1e1e",
+      "srgb": [
+        0.1176,
+        0.1176,
+        0.1176
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.900": {
+    "type": "color",
+    "value": {
+      "hex": "#181818",
+      "srgb": [
+        0.0941,
+        0.0941,
+        0.0941
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.925": {
+    "type": "color",
+    "value": {
+      "hex": "#141414",
+      "srgb": [
+        0.0784,
+        0.0784,
+        0.0784
+      ],
+      "alpha": 1
+    }
+  },
+  "color.neutral.950": {
+    "type": "color",
+    "value": {
+      "hex": "#0a0a0a",
+      "srgb": [
+        0.0392,
+        0.0392,
+        0.0392
+      ],
+      "alpha": 1
+    }
+  },
+  "color.role.accent": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#5ca3ff",
+        "srgb": [
+          0.3608,
+          0.6392,
+          1
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#1f6fe0",
+        "srgb": [
+          0.1216,
+          0.4353,
+          0.8784
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.accent-fg": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#0a0a0a",
+        "srgb": [
+          0.0392,
+          0.0392,
+          0.0392
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#ffffff",
+        "srgb": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.bg": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#181818",
+        "srgb": [
+          0.0941,
+          0.0941,
+          0.0941
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#fafafa",
+        "srgb": [
+          0.9804,
+          0.9804,
+          0.9804
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.fg": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#e0e0e0",
+        "srgb": [
+          0.8784,
+          0.8784,
+          0.8784
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#1e1e1e",
+        "srgb": [
+          0.1176,
+          0.1176,
+          0.1176
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.fg-strong": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#f5f5f5",
+        "srgb": [
+          0.9608,
+          0.9608,
+          0.9608
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#0a0a0a",
+        "srgb": [
+          0.0392,
+          0.0392,
+          0.0392
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.line-strong": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#484848",
+        "srgb": [
+          0.2824,
+          0.2824,
+          0.2824
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#c4c4c4",
+        "srgb": [
+          0.7686,
+          0.7686,
+          0.7686
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.pressed": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#2e2e2e",
+        "srgb": [
+          0.1804,
+          0.1804,
+          0.1804
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#e0e0e0",
+        "srgb": [
+          0.8784,
+          0.8784,
+          0.8784
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.ring": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#5ca3ff",
+        "srgb": [
+          0.3608,
+          0.6392,
+          1
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#1f6fe0",
+        "srgb": [
+          0.1216,
+          0.4353,
+          0.8784
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.role.surface": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#141414",
+        "srgb": [
+          0.0784,
+          0.0784,
+          0.0784
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#ffffff",
+        "srgb": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.switch.knob-off": {
+    "type": "color",
+    "axes": [
+      "theme"
+    ],
+    "values": {
+      "theme=dark": {
+        "hex": "#e0e0e0",
+        "srgb": [
+          0.8784,
+          0.8784,
+          0.8784
+        ],
+        "alpha": 1
+      },
+      "theme=light": {
+        "hex": "#ffffff",
+        "srgb": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  },
+  "color.switch.knob-on": {
+    "type": "color",
+    "value": {
+      "hex": "#ffffff",
+      "srgb": [
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    }
+  },
+  "duration.slide": {
+    "type": "duration",
+    "description": "The switch knob where no spring applies",
+    "value": {
+      "value": 280,
+      "unit": "ms"
+    }
+  },
+  "easing.out": {
+    "type": "cubicBezier",
+    "description": "ease-out: entrances and all moves into place",
+    "value": [
+      0.3,
+      0.7,
+      0.2,
+      1
+    ]
+  },
+  "focus.ring-offset": {
+    "type": "dimension",
+    "value": {
+      "value": 2,
+      "unit": "px"
+    }
+  },
+  "focus.ring-width": {
+    "type": "dimension",
+    "value": {
+      "value": 2,
+      "unit": "px"
+    }
+  },
+  "opacity.disabled": {
+    "type": "number",
+    "description": "A disabled control: 40 % opacity",
+    "value": 0.4
+  },
+  "radius.full": {
+    "type": "dimension",
+    "value": {
+      "value": 999,
+      "unit": "px"
+    }
+  },
+  "shadow.knob": {
+    "type": "shadow",
+    "value": {
+      "color": {
+        "hex": "#000000",
+        "srgb": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.35
+      },
+      "offsetX": {
+        "value": 0,
+        "unit": "px"
+      },
+      "offsetY": {
+        "value": 1,
+        "unit": "px"
+      },
+      "blur": {
+        "value": 2,
+        "unit": "px"
+      },
+      "spread": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "size.control-unit": {
+    "type": "dimension",
+    "description": "The unit of the small controls: the switch knob, the checkbox box",
+    "axes": [
+      "density"
+    ],
+    "values": {
+      "density=pointer": {
+        "value": 16,
+        "unit": "px"
+      },
+      "density=touch": {
+        "value": 20,
+        "unit": "px"
+      }
+    }
+  },
+  "size.target-min": {
+    "type": "dimension",
+    "description": "WCAG 2.5.8",
+    "axes": [
+      "density"
+    ],
+    "values": {
+      "density=pointer": {
+        "value": 24,
+        "unit": "px"
+      },
+      "density=touch": {
+        "value": 44,
+        "unit": "px"
+      }
+    }
+  },
+  "spring.control": {
+    "type": "transition",
+    "description": "spring-control: switch knob, checkbox mark, segmented pill, tab indicator, slider thumb. The transition value is the fallback: the settle time and ease-out.",
+    "extensions": {
+      "dev.monorithm": {
+        "spring": {
+          "stiffness": 900,
+          "damping": 60,
+          "mass": 1
+        }
+      }
+    },
+    "value": {
+      "duration": {
+        "value": 248,
+        "unit": "ms"
+      },
+      "delay": {
+        "value": 0,
+        "unit": "ms"
+      },
+      "timingFunction": [
+        0.3,
+        0.7,
+        0.2,
+        1
+      ]
+    }
+  }
+}

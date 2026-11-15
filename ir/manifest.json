@@ -1,0 +1,12 @@
+{
+  "language": "0.1.0",
+  "compiler": "0.1.0",
+  "schemas": [
+    "contract.schema.json"
+  ],
+  "files": {
+    "axes.json": "af2793e4449b6aa03ed24b4a92c172dfc1bc04801e1278836faffd8192005da4",
+    "canonical.json": "38ac779991f9d9b5795d6243f906016bf658cee86f1a6cec3b7c6183f7f46808",
+    "contracts/switch.json": "cf368dfc435407cda8f841b7b0c0b9c232ff78b8086421d055dc1700a7d1253b"
+  }
+}
