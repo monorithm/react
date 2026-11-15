@@ -47,7 +47,7 @@ Do not edit a file in `src/tokens/`. Change the language source in `monorithm/de
 | Folder | Contents |
 | --- | --- |
 | `src/components/` | One folder for each component |
-| `src/contexts/` | The contexts that many components use, and their providers, for example `MomentProvider` |
+| `src/contexts/` | The contexts from outside one component, and their providers, for example `MomentProvider`. The context of one component stays in its folder |
 | `src/hooks/` | The hooks that many components use, for example `useMoment` |
 | `src/lib/` | The helpers and the types that many components use |
 | `src/tokens/` | The generated tokens. Do not edit them |
@@ -62,7 +62,7 @@ The file names are in kebab-case. A component folder has these files:
 | `<component>.test.tsx` | The tests in jsdom |
 | `index.ts` | The exports of the folder |
 
-An import is relative when its path goes up two folders or fewer, for example `./button.spinner` or `../../lib/cx`. A path that goes up three folders or more is absolute: `@monorithm/react/test/axe`. The paths of `tsconfig.json` resolve the absolute imports.
+A relative import starts with `./` or `../`, for example `./button.spinner` or `../button/button.variants`. A path that goes up two folders or more is absolute, for example `@monorithm/react/lib/cx`. The paths of `tsconfig.json` resolve the absolute imports.
 
 ## The tests
 

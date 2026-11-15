@@ -3,9 +3,9 @@
 import { Checkbox as Base } from '@base-ui/react/checkbox'
 import { type ReactNode, useId } from 'react'
 import { checkboxBox, checkboxMark } from './checkbox.variants'
-import { cx } from '../../lib/cx'
-import { DESCRIPTION, LABEL, LINE, ROW, ROW_INNER, TEXT } from '../../lib/row'
-import { useMoment } from '../../hooks/use-moment'
+import { cx } from '@monorithm/react/lib/cx'
+import { DESCRIPTION, LABEL, LINE, ROW, ROW_INNER, TEXT } from '@monorithm/react/lib/row'
+import { useMoment } from '@monorithm/react/hooks/use-moment'
 
 export interface CheckboxProps {
   /** The name of the option. */

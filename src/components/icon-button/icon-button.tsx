@@ -4,8 +4,8 @@ import { Button as Base } from '@base-ui/react/button'
 import { type MouseEvent, type ReactNode, type Ref, useId } from 'react'
 import { buttonBase, buttonHeights, buttonVariants, type Size } from '../button/button.variants'
 import { iconButtonWidths } from './icon-button.variants'
-import { cx, describedBy } from '../../lib/cx'
-import { useMoment } from '../../hooks/use-moment'
+import { cx, describedBy } from '@monorithm/react/lib/cx'
+import { useMoment } from '@monorithm/react/hooks/use-moment'
 
 export interface IconButtonProps {
   /** The accessible name: the action, for example "Search". The icon is not the name (icon-button/name). */

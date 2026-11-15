@@ -4,8 +4,8 @@ import { Button as Base } from '@base-ui/react/button'
 import { type MouseEvent, type ReactNode, type Ref, useId } from 'react'
 import { ButtonSpinner } from './button.spinner'
 import { buttonBase, buttonHeights, buttonIcon, buttonLayer, buttonPaddings, buttonVariants, type Size } from './button.variants'
-import { cx, describedBy } from '../../lib/cx'
-import { useMoment } from '../../hooks/use-moment'
+import { cx, describedBy } from '@monorithm/react/lib/cx'
+import { useMoment } from '@monorithm/react/hooks/use-moment'
 
 interface CommonProps {
   /** The label: the action, as a verb. "Save", "Mark as shipped" (button/name). */
